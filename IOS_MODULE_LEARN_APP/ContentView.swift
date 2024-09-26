@@ -30,6 +30,9 @@ struct ContentView: View {
 
 func downloadMovies() -> [Movie] {
     // TODO: Download movies
+    let apiKey = "???"
+    let urlString =
+    
     
     
     return []
