@@ -8,37 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    internal init(showOtherItems: Bool = true) {
-        self.showOtherItems = showOtherItems
-    }
-    
     var body: some View {
-        /*List {
-            Button {
-                showOtherItems.toggle()
-            } label : {
-                Label( "Toggle other items", systemImage: "globe")
-            }
-            
-            if showOtherItems {
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-                Text("This is a List item")
-            }
-        }*/
-        let movies: [Int] = [1, 2, 3, 7, 100, 121, 9999] // Konstante
-        
-        List (1 ..< 21) { index in
-                Text("this represents movie \(index)")
+        Button {
+            movies.shuffle()
+        } label:  {
+            Text("Shuffle")
         }
+        List (movies, id: \.self) { movie in // \ keypath
+                Text("this represents movie \(movie)")
+        }.animation(.default, value: movies)
     }
     
-    @State var showOtherItems = true
+    
+    @State var movies = [1, 2, 3, 7, 100, 121, 9999] // Konstante
+    
 }
 
 #Preview {
