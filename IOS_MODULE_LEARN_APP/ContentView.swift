@@ -9,30 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Button {
-            movies.shuffle()
-        } label:  {
-            Text("Shuffle")
-        }
         List (movies, id: \.id) { movie in // \ keypath, also bei Objekt: self.id bspw.
-            Text("this represents movie \(movie.someMovieData)")
-        }.animation(.default, value: movies)
+            Text("this represents movie \(movie.title)")
+        }.refreshable {
+            print("Refresh!")
+            movies = downloadMovies()
+        }
     }
     
     
     @State var movies: [Movie] = [
-        Movie(someMovieData: 1, id: 1),
-        Movie(someMovieData: 2, id: 2),
-        Movie(someMovieData: 3, id: 3),
-        Movie(someMovieData: 3, id: 4),
-        Movie(someMovieData: 4, id: 5),
+        Movie(title: "movieTitle 1"),
+        Movie(title: "movieTitle 2"),
+        Movie(title: "movieTitle 3"),
+        Movie(title: "movieTitle 3"),
+        Movie(title: "movieTitle 4"),
     ] // Konstante
     
 }
 
+func downloadMovies() -> [Movie] {
+    // TODO: Download movies
+    
+    
+    return []
+}
+
 struct Movie: Equatable {
-    let someMovieData: Int
-    let id: Int
+    let title: String
+    let id = UUID()
 }
 
 #Preview {
