@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    internal init(showOtherItems: Bool = true) {
+        self.showOtherItems = showOtherItems
+    }
+    
     var body: some View {
-        List {
+        /*List {
             Button {
                 showOtherItems.toggle()
             } label : {
@@ -26,6 +30,11 @@ struct ContentView: View {
                 Text("This is a List item")
                 Text("This is a List item")
             }
+        }*/
+        let movies: [Int] = [1, 2, 3, 7, 100, 121, 9999] // Konstante
+        
+        List (1 ..< 21) { index in
+                Text("this represents movie \(index)")
         }
     }
     
